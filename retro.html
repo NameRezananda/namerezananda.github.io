@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rezananda Portfolio</title>
+  <!-- Google Fonts: Press Start 2P -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pixel-font: 'Press Start 2P', cursive;
+      --colorful1: #00fff7; /* Neon Cyan */
+      --colorful2: #ff00c8; /* Neon Pink */
+      --colorful3: #ffe600; /* Neon Yellow */
+      --colorful4: #7c5cff; /* Neon Purple */
+      --colorful5: #00b2ff; /* Neon Blue */
+      --bg-light: #0a0a1a; /* Space Black */
+      --bg-dark: #000008; /* AMOLED Black */
+      --text-light: #e0e6ff;
+      --text-dark: #fff;
+      --card-bg-light: #18182a;
+      --card-bg-dark: #10101a;
+      --border-pixel: 4px solid #00fff7;
+      --shadow-pixel: 0 0 0 4px #000, 0 0 0 8px #1a1a2f;
+    }
+    body.mono {
+      --colorful1: #fff;
+      --colorful2: #000;
+      --colorful3: #fff;
+      --colorful4: #000;
+      --colorful5: #fff;
+      --bg-light: #000;
+      --bg-dark: #000;
+      --text-light: #fff;
+      --text-dark: #fff;
+      --card-bg-light: #000;
+      --card-bg-dark: #000;
+      --border-pixel: 4px solid #fff;
+      --shadow-pixel: 0 0 0 4px #000, 0 0 0 8px #fff;
+      background: #000 !important;
+      color: #fff !important;
+    }
+    body.mono .pixel-border,
+    body.mono .about, body.mono .tech-stack, body.mono .projects, body.mono .contact, body.mono footer {
+      background: #000 !important;
+      color: #fff !important;
+      border-color: #fff !important;
+      box-shadow: 0 8px 0 #fff !important;
+    }
+    body.mono .tech-icon,
+    body.mono .project-card,
+    body.mono .contact-form input,
+    body.mono .contact-form textarea,
+    body.mono .contact-form button {
+      background: #000 !important;
+      color: #fff !important;
+      border-color: #fff !important;
+      box-shadow: 2px 2px 0 #fff !important;
+      text-shadow: none !important;
+    }
+    body.mono .project-title,
+    body.mono .project-link {
+      color: #fff !important;
+      text-shadow: none !important;
+    }
+    body.mono .decor-pixel,
+    body.mono body::before,
+    body.mono body.dark::before {
+      display: none !important;
+    }
+    body.mono .toggle-mode,
+    body.mono #modeSwitchBtn,
+    body.mono .contact-form button {
+      background: #fff !important;
+      color: #000 !important;
+      border-color: #fff !important;
+      box-shadow: 0 4px #000 !important;
+      text-shadow: none !important;
+      transition: background 0.2s, color 0.2s;
+    }
+    body.mono .toggle-mode:active,
+    body.mono #modeSwitchBtn:active,
+    body.mono .contact-form button:active {
+      background: #000 !important;
+      color: #fff !important;
+      border-color: #fff !important;
+    }
+    body.mono .toggle-mode:hover,
+    body.mono #modeSwitchBtn:hover,
+    body.mono .contact-form button:hover {
+      background: #e0e0e0 !important;
+      color: #000 !important;
+      border-color: #fff !important;
+    }
+    body {
+      font-family: var(--pixel-font);
+      background: linear-gradient(160deg, #fff 0%, #fff 100%);
+      color: #181825;
+      margin: 0;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+      position: relative;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    body::before {
+      display: none;
+    }
+    body, p, li, textarea {
+      line-height: 1.7;
+    }
+    @keyframes stars-move {
+      0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+      100% { background-position: 400px 800px, 600px 1200px, 800px 1600px, 1000px 2000px, 1200px 2400px; }
+    }
+    body.dark {
+      background: linear-gradient(160deg, #000008 0%, #18182a 100%);
+      color: var(--text-dark);
+    }
+    body.dark::before {
+      display: block;
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: 
+        repeating-radial-gradient(circle at 10% 20%, #fff 0 1px, transparent 1px 100%),
+        repeating-radial-gradient(circle at 80% 60%, #fff 0 1px, transparent 1px 100%),
+        repeating-radial-gradient(circle at 50% 80%, #fff 0 1px, transparent 1px 100%),
+        repeating-radial-gradient(circle at 70% 30%, #fff 0 1px, transparent 1px 100%),
+        repeating-radial-gradient(circle at 30% 50%, #fff 0 1px, transparent 1px 100%);
+      background-size: 400px 400px, 600px 600px, 800px 800px, 1000px 1000px, 1200px 1200px;
+      opacity: 0.18;
+      animation: stars-move 60s linear infinite;
+    }
+    .pixel-border {
+      border: var(--border-pixel);
+      box-shadow: var(--shadow-pixel);
+      border-radius: 0;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(1px);
+    }
+    body.dark .pixel-border {
+      background: rgba(10,10,30,0.85);
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 1rem 1rem;
+      position: relative;
+    }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      background: var(--colorful2);
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--colorful1);
+      border: 4px solid var(--colorful1);
+      box-shadow: 0 0 16px 4px var(--colorful4), 0 0 0 8px var(--colorful3);
+    }
+    .toggle-mode {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--colorful1);
+      color: #000;
+      border: none;
+      font-family: var(--pixel-font);
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 4px var(--colorful2);
+      transition: background 0.2s;
+      text-shadow: 1px 1px #000;
+    }
+    .toggle-mode:active {
+      background: var(--colorful2);
+      color: var(--colorful1);
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--pixel-font);
+      margin: 0.5em 0;
+      text-shadow: 2px 2px var(--colorful2), 4px 4px var(--colorful3);
+    }
+    .decor-pixel {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      z-index: 0;
+      opacity: 0.7;
+      pointer-events: none;
+      transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    }
+    .decor-pixel:hover {
+      transform: scale(1.25) rotate(-10deg);
+      box-shadow: 0 0 24px 8px #fffbe6, 0 0 0 4px #ffe600;
+      z-index: 10;
+    }
+    .about, .tech-stack, .projects, .contact, footer {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: #fffbe6;
+      box-shadow: 0 8px 0 var(--colorful4);
+      border-radius: 0.5rem;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s;
+    }
+    .about:hover, .tech-stack:hover, .projects:hover, .contact:hover, footer:hover {
+      transform: scale(1.025) translateY(-4px);
+      box-shadow: 0 16px 24px -8px var(--colorful4), 0 8px 0 var(--colorful2);
+      z-index: 2;
+    }
+
+    button, .toggle-mode, .contact-form button {
+      transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s, background 0.2s, color 0.2s;
+    }
+    button:hover, .toggle-mode:hover, .contact-form button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px 0 var(--colorful1), 0 4px var(--colorful2);
+      filter: brightness(1.1);
+    }
+
+    .project-card {
+      transition: transform 0.22s cubic-bezier(.4,2,.6,1), box-shadow 0.22s;
+    }
+    .project-card:hover {
+      transform: scale(1.04) translateY(-6px);
+      box-shadow: 0 12px 32px -8px var(--colorful4), 0 8px 0 var(--colorful2);
+      z-index: 2;
+    }
+    body.dark .about, body.dark .tech-stack, body.dark .projects, body.dark .contact, body.dark footer {
+      background: var(--card-bg-dark);
+      box-shadow: 0 8px 0 var(--colorful2);
+    }
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .tech-icon {
+      background: var(--colorful4);
+      color: var(--colorful1);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      border: 2px solid var(--colorful2);
+      box-shadow: 2px 2px 0 var(--colorful1);
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px #fff;
+    }
+    body.dark .tech-icon {
+      text-shadow: 1px 1px #000;
+    }
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .project-card {
+      background: #fff;
+      color: #181825;
+      border: 4px solid var(--colorful2);
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 0 var(--colorful4);
+      padding: 1rem;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      transition: transform 0.2s;
+      background-image: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,230,0,0.08) 100%);
+    }
+    body.dark .project-card {
+      background: var(--colorful5);
+      color: var(--colorful3);
+      background-image: linear-gradient(120deg, rgba(0,0,0,0.2) 0%, rgba(124,92,255,0.2) 100%);
+    }
+    .project-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--colorful2);
+      text-shadow: 1px 1px #fff;
+    }
+    body.dark .project-title {
+      text-shadow: 1px 1px #000;
+    }
+    .project-desc {
+      flex: 1;
+      margin-bottom: 0.5rem;
+    }
+    .project-link {
+      color: var(--colorful1);
+      text-decoration: underline;
+      font-size: 0.9rem;
+      text-shadow: 1px 1px #fff;
+    }
+    body.dark .project-link {
+      text-shadow: 1px 1px #000;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .contact-form input, .contact-form textarea {
+      font-family: var(--pixel-font);
+      font-size: 1rem;
+      padding: 0.5rem;
+      border: 2px solid var(--colorful3);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--colorful1);
+      outline: none;
+      transition: border 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 2px solid var(--colorful1);
+    }
+    .contact-form button {
+      font-family: var(--pixel-font);
+      font-size: 1rem;
+      background: var(--colorful1);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px var(--colorful2);
+      transition: background 0.2s;
+    }
+    .contact-form button:active {
+      background: var(--colorful2);
+      color: var(--colorful1);
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      background: transparent;
+      box-shadow: none;
+    }
+    /* Pixel decorations */
+    .star {
+      background: url('data:image/svg+xml;utf8,<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="%23f5d300" stroke="%23ff5e5b" stroke-width="2"/></svg>') no-repeat center/contain;
+    }
+    .coin {
+      background: url('data:image/svg+xml;utf8,<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg"><ellipse cx="16" cy="16" rx="14" ry="14" fill="%23f5d300" stroke="%23ff5e5b" stroke-width="3"/><ellipse cx="16" cy="16" rx="8" ry="8" fill="%23fffbe6"/></svg>') no-repeat center/contain;
+    }
+    .cloud {
+      background: url('data:image/svg+xml;utf8,<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg"><ellipse cx="16" cy="20" rx="14" ry="8" fill="%23fff"/><ellipse cx="8" cy="18" rx="6" ry="6" fill="%23fff"/><ellipse cx="24" cy="18" rx="6" ry="6" fill="%23fff"/></svg>') no-repeat center/contain;
+    }
+    .rocket {
+      background: url('data:image/svg+xml;utf8,<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g><rect x="14" y="4" width="4" height="16" fill="%23fff" stroke="%23000" stroke-width="2"/><polygon points="16,2 20,8 12,8" fill="%23fff" stroke="%23000" stroke-width="2"/><rect x="13" y="20" width="6" height="6" fill="%23fff" stroke="%23000" stroke-width="2"/><polygon points="16,26 19,32 13,32" fill="%23fff" stroke="%23000" stroke-width="2"/></g></svg>') no-repeat center/contain;
+      display: none;
+    }
+    body.mono .rocket {
+      display: block !important;
+    }
+    @media (max-width: 600px) {
+      .about, .tech-stack, .projects, .contact {
+        padding: 0.7rem;
+      }
+      .projects-list {
+        gap: 1rem;
+      }
+      .project-card {
+        min-height: 120px;
+        font-size: 0.85rem;
+      }
+      #modeSwitchBtn {
+        min-width: unset;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      #modeSwitchBtn[data-mobile="true"] {
+        font-size: 1.5em;
+      }
+    }
+    .see-more-btn {
+      font-family: var(--pixel-font);
+      font-size: 1rem;
+      background: var(--colorful2);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 2rem;
+      cursor: pointer;
+      box-shadow: 0 4px var(--colorful4);
+      margin: 0 auto;
+      transition: background 0.2s, color 0.2s, transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
+    }
+    .see-more-btn:hover {
+      background: var(--colorful1);
+      color: #000;
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px 0 var(--colorful1), 0 4px var(--colorful2);
+      filter: brightness(1.1);
+    }
+    body.mono .see-more-btn {
+      border: 2px solid #fff !important;
+      box-shadow: 0 4px #fff !important;
+      background: #000 !important;
+      color: #fff !important;
+    }
+    body.mono .see-more-btn:hover {
+      background: #fff !important;
+      color: #000 !important;
+      border: 2px solid #fff !important;
+      box-shadow: 0 6px 16px 0 #fff, 0 4px #fff !important;
+    }
+    .invisible-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .invisible-table td {
+      border: none;
+      padding: 4px 8px;
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+  <!-- Pixel Decorations -->
+  <div class="decor-pixel star" style="top: 20px; left: 20px;"></div>
+  <div class="decor-pixel coin" style="top: 80px; right: 40px;"></div>
+  <div class="decor-pixel cloud" style="top: 200px; left: 60px;"></div>
+  <div class="decor-pixel star" style="bottom: 60px; right: 30px;"></div>
+  <div class="decor-pixel coin" style="bottom: 120px; left: 40px;"></div>
+  <!-- Tambahan dekorasi -->
+  <div class="decor-pixel star" style="top: 150px; left: 300px;"></div>
+  <div class="decor-pixel coin" style="top: 300px; right: 120px;"></div>
+  <div class="decor-pixel cloud" style="top: 400px; left: 200px;"></div>
+  <div class="decor-pixel star" style="bottom: 200px; right: 200px;"></div>
+  <div class="decor-pixel coin" style="bottom: 250px; left: 300px;"></div>
+  <div class="decor-pixel cloud" style="bottom: 80px; right: 100px;"></div>
+  <!-- Dekorasi roket khusus mono mode -->
+  <div class="decor-pixel rocket" style="top: 60px; left: 50%; transform: translateX(-50%) rotate(-20deg);"></div>
+
+  <header class="pixel-border">
+    <button class="toggle-mode" id="modeSwitchBtn">🌙 Dark Mode</button>
+    <div class="avatar">🕹️</div>
+    <h1>Hi 👋, I'm Rezananda</h1>
+    <h3>Software Engineering Student • Web & App Developer</h3>
+  </header>
+
+  <section class="about pixel-border">
+    <h2>👨‍💻 About Me</h2>
+    <p>🎓 I'm currently studying <b>Software Engineering</b> at <b>IPWIJA University</b> (Weekend Class Program).<br>
+    💼 I’m a working student with a strong passion for <b>technology, coding, and game development</b>.<br>
+    🧠 I’m constantly learning and building projects using:</p>
+    <table class="invisible-table">
+      <tr>
+        <td>🌐 Frontend:</td>
+        <td><b>HTML, CSS, JavaScript</b></td>
+      </tr>
+      <tr>
+        <td>🔧 Backend:</td>
+        <td><b>PHP</b></td>
+      </tr>
+      <tr>
+        <td>🗃️ Database:</td>
+        <td><b>MySQL</b></td>
+      </tr>
+      <tr>
+        <td>💻 Desktop App:</td>
+        <td><b>C#</b></td>
+      </tr>
+      <tr>
+        <td>🎮 Game Engine:</td>
+        <td><b>Godot</b></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="tech-stack pixel-border">
+    <h2>🚀 Tech Stack & Tools</h2>
+    <div class="tech-icons">
+      <div class="tech-icon">HTML5</div>
+      <div class="tech-icon">CSS3</div>
+      <div class="tech-icon">JavaScript</div>
+      <div class="tech-icon">PHP</div>
+      <div class="tech-icon">MySQL</div>
+      <div class="tech-icon">C#</div>
+      <div class="tech-icon">Godot</div>
+    </div>
+  </section>
+
+  <section class="projects pixel-border">
+    <h2>🎮 My Projects</h2>
+    <div class="projects-list">
+      <!-- Example Project Card -->
+      <div class="project-card">
+        <div class="project-title">Pixel Platformer Game</div>
+        <div class="project-desc">A retro-style platformer game built with Godot, featuring pixel art, power-ups, and multiple levels.</div>
+        <a class="project-link" href="#" target="_blank">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Personal Portfolio Website</div>
+        <div class="project-desc">My own portfolio website with a retro pixel game theme, built using HTML, CSS, and JavaScript.</div>
+        <a class="project-link" href="#" target="_blank">View Project</a>
+      </div>
+      <!-- Tambahkan project lain di sini -->
+      <div class="project-card" style="opacity:0.5;filter:grayscale(1);">
+        <div class="project-title">[Your Project Here]</div>
+        <div class="project-desc">Space kosong untuk project Anda berikutnya!</div>
+        <span class="project-link">Coming Soon</span>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:1.5rem;">
+      <button class="see-more-btn">See More</button>
+    </div>
+  </section>
+
+  <section class="contact pixel-border">
+    <h2>📫 Let's Connect</h2>
+    <form class="contact-form" autocomplete="off">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div style="margin-top:1rem;">
+      <b>GitHub:</b> <a href="https://github.com/NameRezananda" target="_blank">@NameRezananda</a> &nbsp;|
+      <b>Email:</b> <a href="mailto:name.rezananda@gmail.com">name.rezananda@gmail.com</a> &nbsp;|
+      <b>LinkedIn:</b> <a href="https://linkedin.com/in/rezananda" target="_blank">rezananda</a>
+    </div>
+  </section>
+
+  <footer>
+    <div style="margin-bottom:0.5rem;">
+      <em>“Learning while working is not a limitation — it's the path to continuous growth.”</em> – <b>Rezananda</b>
+    </div>
+    <div>© 2024 Rezananda. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // 3-way mode switch: Light → Dark → Mono → Light ...
+    const modeSwitchBtn = document.getElementById('modeSwitchBtn');
+    const body = document.body;
+    // 0 = light, 1 = dark, 2 = mono
+    let modeIndex = 1;
+    const modeLabels = [
+      '🌙 Dark Mode', // light
+      '⬛ Mono Mode', // dark
+      '☀️ Light Mode' // mono
+    ];
+    const modeIcons = [
+      '🌙', // light
+      '⬛', // dark
+      '☀️'  // mono
+    ];
+    function setMode(idx) {
+      body.classList.remove('dark', 'mono');
+      if (idx === 1) body.classList.add('dark');
+      if (idx === 2) body.classList.add('mono');
+      // Cek apakah mobile
+      const isMobile = window.matchMedia('(max-width: 600px)').matches;
+      if (isMobile) {
+        modeSwitchBtn.textContent = modeIcons[idx];
+        modeSwitchBtn.setAttribute('data-mobile', 'true');
+      } else {
+        modeSwitchBtn.textContent = modeLabels[idx];
+        modeSwitchBtn.removeAttribute('data-mobile');
+      }
+    }
+    modeSwitchBtn.addEventListener('click', () => {
+      modeIndex = (modeIndex + 1) % 3;
+      setMode(modeIndex);
+    });
+    // Set initial mode
+    setMode(modeIndex);
+    // Update mode label/icon on resize
+    window.addEventListener('resize', () => setMode(modeIndex));
+    // Contact form dummy handler
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message!');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

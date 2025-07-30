@@ -534,6 +534,9 @@
                 padding: 20px;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             }
+            body.dark-mode .nav-links{
+                background-color: #001f44;
+            }
 
             .nav-links.active {
                 display: flex;
@@ -545,6 +548,7 @@
 
             .hamburger {
                 display: block;
+                margin-left: auto;
             }
 
             .hero-content {
@@ -601,6 +605,7 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="retro.html">Retro Themes</a></li>
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -619,7 +624,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Hi, I'm Rezananda</h1>
-                    <p>Software Engineering Student at IPW1JA University</p>
+                    <p>Software Engineering Student at IPWIJA University</p>
                     <a href="#contact" class="btn btn-tf-l">Contact Me</a>
                     <a href="#" class="btn btn-tf-r" style="margin-left: 15px; margin-top: 10px; background-color: var(--gray-color);">Download CV</a>
                 </div>
@@ -637,12 +642,29 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Software Engineer</h3>
-                    <p>I am a Software Engineering student at IPW1JA University since 2023. I have completed my high school education and have a strong interest in computers and technology.</p>
+                    <p>I am a Software Engineering student at IPWIJA University (Weekend Class Program) since 2023. I’m a working student with a strong passion for technology, coding, and game development.</p>
                     <p>I enjoy solving problems and creating efficient solutions through programming. My journey in software development started when I was in high school, and since then I've been continuously learning and improving my skills.</p>
+                    <p><b>Tech Stack:</b> HTML, CSS, JavaScript, PHP, MySQL, C#, Godot</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://via.placeholder.com/400x300" alt="About Image">
+                    <img src="images/working_laptop.png" alt="About Image">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack & Tools Section (badge & icon) -->
+    <section id="tech-stack">
+        <div class="container">
+            <h2 class="section-title">Tech Stack & Tools</h2>
+            <div class="tech-badges" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;justify-content:center;align-items:center;">
+                <span class="badge" style="display:flex;align-items:center;gap:8px;background:#f3f4f6;padding:8px 18px;border-radius:20px;font-size:1rem;font-weight:500;"><i class="fab fa-html5" style="color:#e34c26;"></i>HTML5</span>
+                <span class="badge" style="display:flex;align-items:center;gap:8px;background:#f3f4f6;padding:8px 18px;border-radius:20px;font-size:1rem;font-weight:500;"><i class="fab fa-css3-alt" style="color:#1572b6;"></i>CSS3</span>
+                <span class="badge" style="display:flex;align-items:center;gap:8px;background:#f3f4f6;padding:8px 18px;border-radius:20px;font-size:1rem;font-weight:500;"><i class="fab fa-js" style="color:#f7df1e;"></i>JavaScript</span>
+                <span class="badge" style="display:flex;align-items:center;gap:8px;background:#f3f4f6;padding:8px 18px;border-radius:20px;font-size:1rem;font-weight:500;"><i class="fab fa-php" style="color:#777bb4;"></i>PHP</span>
+                <span class="badge" style="display:flex;align-items:center;gap:8px;background:#f3f4f6;padding:8px 18px;border-radius:20px;font-size:1rem;font-weight:500;"><i class="fas fa-database" style="color:#005c84;"></i>MySQL</span>
+                <span class="badge" style="display:flex;align-items:center;gap:8px;background:#f3f4f6;padding:8px 18px;border-radius:20px;font-size:1rem;font-weight:500;"><i class="fas fa-desktop" style="color:#239120;"></i>C#</span>
+                <span class="badge" style="display:flex;align-items:center;gap:8px;background:#f3f4f6;padding:8px 18px;border-radius:20px;font-size:1rem;font-weight:500;"><i class="fas fa-gamepad" style="color:#478cbf;"></i>Godot</span>
             </div>
         </div>
     </section>
@@ -759,7 +781,7 @@
                     <div class="timeline-content">
                         <div class="timeline-date">2023 - Present</div>
                         <h3>Software Engineering</h3>
-                        <p>IPW1JA University</p>
+                        <p>IPWIJA University</p>
                     </div>
                 </div>
                 <div class="timeline-item right">
@@ -779,6 +801,90 @@
             </div>
         </div>
     </section>
+
+    <!-- Projects Section (katalog card dengan gambar, judul, deskripsi hover) -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-catalog" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;">
+                <!-- Project Card 1 -->
+                <div class="project-card-catalog" style="position:relative;overflow:hidden;border-radius:16px;box-shadow:0 4px 16px rgba(30,58,138,0.08);background:#fff;transition:transform 0.2s;">
+                    <img src="https://placehold.co/400x220/1E3A8A/fff?text=Sched-U" alt="Pixel Platformer Game" style="width:100%;display:block;">
+                    <div style="padding:1rem;">
+                        <div style="font-size:1.1rem;font-weight:600;color:#1E3A8A;">University Scheduler Web App</div>
+                    </div>
+                    <div class="project-desc-hover" style="position:absolute;inset:0;background:rgba(30,58,138,0.96);color:#fff;display:block;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;padding:2rem;text-align:center;font-size:1rem;">
+                        A Scheduler app using database and schedule calculation, using integration with Whatsapp blast and many more feature.<br><a href="#" target="_blank" style="color:#fff;text-decoration:underline;margin-top:1em;display:block;">View Project</a>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-card-catalog" style="position:relative;overflow:hidden;border-radius:16px;box-shadow:0 4px 16px rgba(30,58,138,0.08);background:#fff;transition:transform 0.2s;">
+                    <img src="https://placehold.co/400x220/3B82F6/fff?text=Portfolio+Website" alt="Personal Portfolio Website" style="width:100%;display:block;">
+                    <div style="padding:1rem;">
+                        <div style="font-size:1.1rem;font-weight:600;color:#1E3A8A;">Personal Portfolio Website</div>
+                    </div>
+                    <div class="project-desc-hover" style="position:absolute;inset:0;background:rgba(30,58,138,0.96);color:#fff;display:block;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;padding:2rem;text-align:center;font-size:1rem;">
+                        My own portfolio website with a retro pixel game theme, built using HTML, CSS, and JavaScript.<br><a href="#" target="_blank" style="color:#fff;text-decoration:underline;margin-top:1em;display:inline-block;">View Project</a>
+                    </div>
+                </div>
+                <!-- Project Card Coming Soon -->
+                <div class="project-card-catalog" style="position:relative;overflow:hidden;border-radius:16px;box-shadow:0 4px 16px rgba(30,58,138,0.08);background:#f3f4f6;transition:transform 0.2s;filter:grayscale(1);opacity:0.7;">
+                    <img src="https://placehold.co/400x220/6B7280/fff?text=Coming+Soon" alt="Coming Soon" style="width:100%;display:block;">
+                    <div style="padding:1rem;">
+                        <div style="font-size:1.1rem;font-weight:600;color:#6B7280;">Otopedia</div>
+                    </div>
+                    <div class="project-desc-hover" style="position:absolute;inset:0;background:rgba(107,114,128,0.96);color:#fff;display:block;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;padding:2rem;text-align:center;font-size:1rem;">
+                        An Automotive pages for petrol head to see information about automotive<br><span style="color:#fff;text-decoration:underline;margin-top:1em;display:inline-block;">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+            <a href="#" class="btn">See More</a>
+        </div>
+    </section>
+    <style>
+    .project-card-catalog:hover .project-desc-hover {
+        opacity: 1 !important;
+    }
+    .project-card-catalog:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 8px 32px -8px #1E3A8A33, 0 8px 0 #3B82F622;
+    }
+    .badge:hover {
+        box-shadow: 0 2px 8px #3B82F644;
+        background: #e0e7ef;
+    }
+    .tech-badges {
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    /* Tambahan: badge dark mode */
+    body.dark-mode .badge {
+        background: #18181b !important;
+        color: #fff !important;
+        border: 1.5px solid #fff !important;
+    }
+    body.dark-mode .badge i {
+        color: #fff !important;
+        filter: drop-shadow(0 0 2px #fff2);
+    }
+    /* Tambahan: project card dark mode */
+    body.dark-mode .project-card-catalog {
+        background: #23232b !important;
+        box-shadow: 0 4px 16px rgba(30,58,138,0.18);
+    }
+    body.dark-mode .project-card-catalog .project-desc-hover {
+        background: rgba(24,24,27,0.96) !important;
+        color: #fff !important;
+    }
+    body.dark-mode .project-card-catalog div[style*='color:#1E3A8A;'] {
+        color: #60a5fa !important;
+    }
+    body.dark-mode .project-card-catalog div[style*='color:#6B7280;'] {
+        color: #a1a1aa !important;
+    }
+    </style>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -806,12 +912,20 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fab fa-github"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Address</h3>
-                            <p>Jatibening, Pondok Gede, Kota Bekasi, Jawa Barat</p>
-                            <p>Cikohuripan, Klapanunggal, Kab. Bogor, Jawa Barat</p>
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/NameRezananda" target="_blank">@NameRezananda</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>LinkedIn</h3>
+                            <a href="https://linkedin.com/in/rezananda" target="_blank">rezananda</a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -854,6 +968,9 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
             <p>&copy; 2023 Rezananda. All rights reserved.</p>
+            <div style="margin-top:1em;">
+                <em>“Learning while working is not a limitation — it's the path to continuous growth.”</em> – <b>Rezananda</b>
+            </div>
         </div>
     </footer>
 
